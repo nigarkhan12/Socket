@@ -16,12 +16,18 @@ io.on('connection', function(socket){
     //     socket.send("Hello Socket IO (Server to Client)");
     // },10000);
 
-    setInterval(function(){
-        let date = new Date();
-        let time = date.getTime();
-        // socket.send(time);
-        socket.emit("myEvent",time);
-    },2000);
+    // Custom Event
+    // setInterval(function(){
+    //     let date = new Date();
+    //     let time = date.getTime();
+    //     // socket.send(time);
+    //     socket.emit("myEvent",time);
+    // },2000);
+
+    // Receive data from Client
+    socket.on('message', function(msg){
+        console.log(msg);
+    })
 
 })
 
