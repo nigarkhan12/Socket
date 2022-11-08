@@ -8,8 +8,8 @@ const expressServer = http.createServer(app);
 const {Server}=require('socket.io');
 const io = new Server(expressServer);
 
-io.on('connection', function(socket){
-    console.log("New user connected");
+// io.on('connection', function(socket){
+//     console.log("New user connected");
 
     // SetTimeout
     // setTimeout(function(){
@@ -31,11 +31,15 @@ io.on('connection', function(socket){
     // })
 
     // Receive data from Client Using Custom Event
-    socket.on('myEvent', function(msg){
-        console.log(msg);
-    })
+    //     socket.on('myEvent', function(msg){
+    //         console.log(msg);
+    //     })
 
-})
+// })
+
+io.on('connection', function(socket){
+io.sockets.emit("myBroadcast", "Hello Noggler!!!");
+});
 
 app.get('/',function(req,res){
     res.sendFile(__dirname+"/index.html");

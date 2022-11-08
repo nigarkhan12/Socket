@@ -8,11 +8,16 @@
 </head>
 <body>
     <!-- <h1 id="myTime"></h1> -->
-    <input type="text" id="name">
-    <button id="send" onclick="send()">Send</button>
+    <h1 id="myBroadcastMsg"></h1>
+    <!-- <input type="text" id="name">
+    <button id="send" onclick="send()">Send</button> -->
     <script src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
+
+        socket.on('myBroadcast', function(msg){
+        document.getElementById('myBroadcastMsg').innerHTML = msg;
+        })
 
         // function send(){
         //     let name = document.getElementById('name').value;
@@ -20,10 +25,10 @@
         // }
 
         // Custom Event
-        function send(){
-            let name = document.getElementById('name').value;
-            socket.emit('myEvent', name);
-        }
+        // function send(){
+        //     let name = document.getElementById('name').value;
+        //     socket.emit('myEvent', name);
+        // }
 
         // socket.on('message', function(msg){
         //     // document.write(msg);
