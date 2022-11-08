@@ -37,7 +37,7 @@
 
         function sendMsg(){
             let msg = document.getElementById('msg').value;
-            alert(msg);
+            socket.emit('chat', msg);
         }
         
     </script>

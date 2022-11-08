@@ -9,7 +9,9 @@ const {Server}=require('socket.io');
 const io = new Server(expressServer);
 
 io.on('connection', function(socket){
-    console.log("New User Connected");
+    socket.on('chat', function (msg) {
+        console.log(msg);
+    })
 })
 
 app.get('/',function(req,res){
