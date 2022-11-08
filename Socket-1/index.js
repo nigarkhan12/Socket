@@ -11,9 +11,9 @@ const io = new Server(expressServer);
 io.on('connection', function(socket){
     console.log("New user connected");
 
-    socket.on('disconnect', function(){
-        console.log("User disconnected");
-    })
+    setTimeout(function(){
+        socket.send("Hello Socket IO (Server to Client)");
+    },10000);
 })
 
 app.get('/',function(req,res){
