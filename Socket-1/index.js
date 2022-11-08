@@ -11,9 +11,17 @@ const io = new Server(expressServer);
 io.on('connection', function(socket){
     console.log("New user connected");
 
-    setTimeout(function(){
-        socket.send("Hello Socket IO (Server to Client)");
-    },10000);
+    // SetTimeout
+    // setTimeout(function(){
+    //     socket.send("Hello Socket IO (Server to Client)");
+    // },10000);
+
+    setInterval(function(){
+        let date = new Date();
+        let time = date.getTime();
+        socket.send(time);
+    },2000);
+
 })
 
 app.get('/',function(req,res){
