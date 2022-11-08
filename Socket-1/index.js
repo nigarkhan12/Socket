@@ -8,6 +8,16 @@ const expressServer = http.createServer(app);
 const {Server}=require('socket.io');
 const io = new Server(expressServer);
 
+let buyNsp = io.of("/buy");
+buyNsp.on('connection', function(socket){
+    buyNsp.emit("myNspEvent", "Hello Buy!");
+});
+
+let sellNsp = io.of("/sell");
+sellNsp.on('connection', function(socket){
+    sellNsp.emit("mySellEvent", "Hello Sell!");
+});
+
 // io.on('connection', function(socket){
 //     console.log("New user connected");
 
