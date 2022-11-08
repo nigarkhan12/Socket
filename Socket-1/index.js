@@ -17,6 +17,7 @@ io.on('connection', function(socket){
     // },10000);
 
     // Custom Event
+    // *** For custom event we have to use emit method *** 
     // setInterval(function(){
     //     let date = new Date();
     //     let time = date.getTime();
@@ -25,7 +26,12 @@ io.on('connection', function(socket){
     // },2000);
 
     // Receive data from Client
-    socket.on('message', function(msg){
+    // socket.on('message', function(msg){
+    //     console.log(msg);
+    // })
+
+    // Receive data from Client Using Custom Event
+    socket.on('myEvent', function(msg){
         console.log(msg);
     })
 
