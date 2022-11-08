@@ -19,7 +19,8 @@ io.on('connection', function(socket){
     setInterval(function(){
         let date = new Date();
         let time = date.getTime();
-        socket.send(time);
+        // socket.send(time);
+        socket.emit("myEvent",time);
     },2000);
 
 })

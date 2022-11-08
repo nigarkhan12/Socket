@@ -12,11 +12,15 @@
     <script>
         let socket = io();
 
-        socket.on('message', function(msg){
-            // document.write(msg);
+        // socket.on('message', function(msg){
+        //     // document.write(msg);
+        //     document.getElementById('myTime').innerHTML="";
+        //     document.getElementById('myTime').innerHTML=msg;
+        // });
+        socket.on('myEvent', function(msg){
             document.getElementById('myTime').innerHTML="";
             document.getElementById('myTime').innerHTML=msg;
-        })
+        });
     </script>
 </body>
 </html>
