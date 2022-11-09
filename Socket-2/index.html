@@ -9,14 +9,17 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-    <center>
-        <h1>Live Chat Application</h1>
-    </center>
 
-    <div class="container">
+        <h1>Live Chat Application</h1>
+        <h2 id="msg"></h2>
+        <h2 id="msg1"></h2>
+        <h3 id="msg2"></h3>
+
+    <!-- <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6 col-12 col-lg-6"> 
-                <ul></ul>
+                <ul id="msgHistory">
+                </ul>
             </div>
         </div>
     </div>
@@ -30,16 +33,25 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <script src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
 
-        function sendMsg(){
-            let msg = document.getElementById('msg').value;
-            socket.emit('chat', msg);
-        }
+        socket.on('cooking',function(data){
+            document.getElementById('msg').innerHTML = data;  
+        })
+
+        socket.on('boiling', function (data) {
+                document.getElementById('msg1').innerHTML = data;
+        })
+
+        socket.on('sleep', function (data) {
+                document.getElementById('msg2').innerHTML = data;
+        })
         
+
+
     </script>
 </body>
 </html>

@@ -8,11 +8,35 @@ const expressServer = http.createServer(app);
 const {Server}=require('socket.io');
 const io = new Server(expressServer);
 
-io.on('connection', function(socket){
-    socket.on('chat', function (msg) {
-        console.log(msg);
-    })
+io.on('connection', function (socket) {
+    socket.join('kitchen-room');
+    io.sockets.in('kitchen-room').emit('cooking', "Fried Rice Cooking");
+    io.sockets.in('kitchen-room').emit('boiling', "Boiling Water");
+
+    socket.join('Bed-room');
+    io.sockets.in('Bed-room').emit('sleep', "I am Sleeping");
 })
+
+// io.on('connection', function(socket){
+//     socket.on('chat', function (msg) {
+//         io.emit('chatSend', msg);
+//     })
+// })
+
+// HTML Script Code
+        //  <!-- function sendMsg(){
+        //     let msg = document.getElementById('msg').value;
+        //     socket.emit('chat', msg);
+        //     document.getElementById('msg').value="";
+        // <!-- }  -->
+        
+        // <!-- socket.on('chatSend', function(msg){
+        //  let listItem = document.createElement('li');
+        // listItem.textContent=msg;
+        
+        // let msgHistory = document.getElementById('msgHistory');
+        // msgHistory.appendChild(listItem);
+        // })   
 
 app.get('/',function(req,res){
     res.sendFile(__dirname+"/index.html");
