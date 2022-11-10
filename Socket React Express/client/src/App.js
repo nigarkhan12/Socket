@@ -8,7 +8,9 @@ export class App extends Component {
   }
   render() {
     return (
-      <div>App</div>
+      <div>
+        <h1>This is Client SIde</h1>
+      </div>
     )
   }
 }
