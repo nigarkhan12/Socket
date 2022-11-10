@@ -23,6 +23,10 @@ app.get('/express-server', function (req, res) {
 io.on('connection', function (socket) {
     console.log("New User Connected!");
 
+    setTimeout(function () {
+        socket.emit('msg', "This is message from express server")
+    }, 2000);
+
     socket.on('disconnect', function () {
     console.log("User Disconnected");
 })
